@@ -1,0 +1,33 @@
+{
+  "name": "node_demo",
+  "version": "1.0.0",
+  "description": "Demoing chai-http testing for node apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodejs server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtkaufman737/node_demo.git"
+  },
+  "keywords": [
+    "node",
+    "chai",
+    "chai-http"
+  ],
+  "author": "JTK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtkaufman737/node_demo/issues"
+  },
+  "homepage": "https://github.com/jtkaufman737/node_demo#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mocha": "^8.2.1",
+    "mongodb": "^3.6.3"
+  }
+}
