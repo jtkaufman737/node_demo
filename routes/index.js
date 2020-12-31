@@ -4,7 +4,7 @@ const equipment = require('./equipment')
 
 /*
 Below code creates route definitions and resources.
-`app.use` is a special step to configure various middleware settings w/ Express 
+`app.use` is a special step to configure various middleware settings w/ Express
 */
 
 module.exports = (app) => {

@@ -1,14 +1,20 @@
-require('mongodb');
+require('dotenv').config();
 
+const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const ui = process.env.MONGO_URI;
 
-// Create new mongo connector instance
-const mongoClient = new MongoClient(uri, {
-  reconnectTries: Number.MAX_VALUE,
-  autoreconnect: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+/*
+This function wraps the mongo client constructor so that a command line
+arg for db (test or prod) can be passed by npm start scripts
+*/
 
-mongo.exports = mongoClient;
+const mongoClient = (uri) => {
+  uri = process.env[uri];
+
+  return new MongoClient(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+  });
+}
+
+module.exports = mongoClient;
