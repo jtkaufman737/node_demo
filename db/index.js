@@ -1,20 +1,17 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const mongodb = require('mongodb');
+const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
-/*
-This function wraps the mongo client constructor so that a command line
-arg for db (test or prod) can be passed by npm start scripts
-*/
+// queues up test db for integration tests if not run in prod mode
+const envVar =
+  process.env.NODE_ENV == "production" ? "MONGO_URI" : "MONGO_URI_TEST";
+const uri = process.env[envVar];
 
-const mongoClient = (uri) => {
-  uri = process.env[uri];
-
-  return new MongoClient(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-  });
-}
+// creates mongo client to be bound to express app instance
+const mongoClient = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 module.exports = mongoClient;
