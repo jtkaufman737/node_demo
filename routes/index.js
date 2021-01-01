@@ -1,6 +1,6 @@
 // import each route to be bound to the express instance
-const pokemon = require('./pokemon')
-const equipment = require('./equipment')
+const pokemon = require("./pokemon");
+const equipment = require("./equipment");
 
 /*
 Below code creates route definitions and resources.
@@ -8,6 +8,6 @@ Below code creates route definitions and resources.
 */
 
 module.exports = (app) => {
-  app.use('/api/pokemon', pokemon)
-  app.use('/api/equipment', equipment)
-}
+  app.use("/api/pokemon", pokemon);
+  app.use("/api/equipment", equipment);
+};
