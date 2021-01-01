@@ -4,8 +4,8 @@
   "description": "Demoing chai-http testing for node apps",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon server.js MONGO_URI_TEST",
-    "start": "nodemon server.js MONGO_URI"
+    "test": "mocha --recursive --exit",
+    "start": "NODE_ENV=production nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jtkaufman737/node_demo#readme",
   "dependencies": {
+    "babel": "^6.23.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
