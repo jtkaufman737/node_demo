@@ -20,7 +20,6 @@ This project is designed to be run from within Docker and on a Fedora image, alt
    dnf -y install git nodejs
    cd ~/node_demo
    npm install
-
 ```
 
 4. To test if this worked, you can navigate back outside docker to `localhost:3000/api/pokemon` and you should see your seed data from MongoDB.
@@ -30,7 +29,3 @@ This project is designed to be run from within Docker and on a Fedora image, alt
 Part II and III blog posts exploring the composition of the project skeleton will be released over the next few days. A powerpoint presentation and video of this tech talk will be forthcoming at some point as well. Those links will be added as I go.
 
 Part of this skeleton was that I created an initial very basic endpoint and very minimal integration tests for it, the `/pokemon` endpoint only - the talk will cover creating endpoint functionality and integration tests for `/equipment` and that will be pushed to a separate branch to show the finished product.
-
-```
-
-```
