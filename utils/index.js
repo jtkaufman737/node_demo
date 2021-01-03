@@ -23,6 +23,12 @@ const utils = {
         ];
         pokemon = evolutions[Math.floor(Math.random() * evolutions.length)];
         break;
+      case "caterpie":
+        pokemon = "metapod";
+        break;
+      case "abra":
+        pokemon = "kadabra";
+        break;
       default:
         pokemon = "No evolution";
         break;

@@ -10,8 +10,6 @@ Get all pokemon
 router.get("/", async (req, res) => {
   const client = req.app.mongo;
   const dbName = client.s.dbName;
-
-  await client.connect();
   const pokemon = await client.db(dbName).collection("pokemon");
 
   pokemon.find({}).toArray((err, response) => {
@@ -30,8 +28,6 @@ router.get("/:id", async (req, res) => {
   const client = req.app.mongo;
   const dbName = client.s.dbName;
   const id = req.params.id;
-
-  await client.connect();
 
   // ObjectId is mongo parlance for formatting the id to match the PK field of the document
   const pokemon = await client
@@ -63,11 +59,13 @@ router.post("/", async (req, res) => {
   const client = req.app.mongo;
   const dbName = client.s.dbName;
 
-  await client.connect();
-
   try {
-    await client.db(dbName).collection("pokemon").insertOne(req.body);
-    res.sendStatus(200);
+    const result = await client
+      .db(dbName)
+      .collection("pokemon")
+      .insertOne(req.body);
+
+    res.status(201).send(result.ops[0]);
   } catch (e) {
     res.send(e);
   }
@@ -83,8 +81,6 @@ Image <String>
 router.patch("/:id", async (req, res) => {
   const client = req.app.mongo;
   const dbName = client.s.dbName;
-
-  await client.connect();
 
   try {
     const filter = { _id: ObjectId(req.params.id) };
@@ -109,8 +105,6 @@ Deletes pokemon from collection by id
 router.delete("/:id", async (req, res) => {
   const client = req.app.mongo;
   const dbName = client.s.dbName;
-
-  await client.connect();
 
   try {
     const filter = { _id: ObjectId(req.params.id) };

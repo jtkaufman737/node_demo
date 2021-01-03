@@ -15,6 +15,7 @@ app.use(cors());
 
 // sets db as application wide value
 app.mongo = db;
+app.mongo.connect();
 
 // mounts routes to app
 routes(app);
@@ -22,6 +23,10 @@ routes(app);
 // serves app on port 3000
 app.listen(port, () => {
   console.log("server running on port 3000");
+});
+
+app.on("close", () => {
+  app.mongo.close(); // Closes out mongo connection
 });
 
 // allows the tests to import the app instance
