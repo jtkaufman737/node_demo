@@ -33,19 +33,13 @@ router.get("/:id", async (req, res) => {
   const pokemon = await client
     .db(dbName)
     .collection("pokemon")
-    .find({ _id: ObjectId(id) });
-
-  pokemon.toArray((err, response) => {
-    if (err) {
+    .findOne({ _id: ObjectId(id) })
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
       res.send(err);
-    }
-
-    if (!response.length) {
-      res.sendStatus(404);
-    }
-
-    res.send(response);
-  });
+    });
 });
 
 /*
