@@ -25,9 +25,5 @@ app.listen(port, () => {
   console.log("server running on port 3000");
 });
 
-app.on("close", () => {
-  app.mongo.close(); // Closes out mongo connection
-});
-
 // allows the tests to import the app instance
 module.exports = app;

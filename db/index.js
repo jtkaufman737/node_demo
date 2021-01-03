@@ -9,9 +9,19 @@ const envVar =
 const uri = process.env[envVar];
 
 // creates mongo client to be bound to express app instance
-const mongoClient = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const mongoClient = new MongoClient(
+  uri,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err, db) => {
+    if (err) {
+      console.error(err);
+    }
+
+    db.close();
+  }
+);
 
 module.exports = mongoClient;
