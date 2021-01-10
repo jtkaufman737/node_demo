@@ -13,16 +13,14 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cors());
 
-// sets db as application wide value
-app.mongo = db;
-app.mongo.connect();
-
 // mounts routes to app
 routes(app);
 
-// serves app on port 3000
-app.listen(port, () => {
+// run app, bind db to app instance
+app.listen(port, async() => {
   console.log("server running on port 3000");
+  app.mongo = db;
+  await app.mongo.connect();
 });
 
 // allows the tests to import the app instance
