@@ -16,12 +16,11 @@ const mongoClient = new MongoClient(
     useUnifiedTopology: true,
   },
   (err, db) => {
-    if (err) {
-      console.error(err);
-    }
-
-    db.close();
+    console.error(err);
+    db.close()
   }
 );
+
+mongoClient.connect();
 
 module.exports = mongoClient;

@@ -17,10 +17,9 @@ app.use(cors());
 routes(app);
 
 // run app, bind db to app instance
-app.listen(port, async() => {
+app.listen(port, () => {
   console.log("server running on port 3000");
   app.mongo = db;
-  await app.mongo.connect();
 });
 
 // allows the tests to import the app instance
